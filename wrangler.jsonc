@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-finance",
+  "account_id": "8383f94454bf227d879221677a72a9a1",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-20",
+  "workers_dev": true,
+  // Route takes precedence over the ai-faq Custom Domain on tools.revou.co
+  "routes": [{ "pattern": "tools.revou.co/ai-finance*", "zone_name": "revou.co" }],
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "observability": { "enabled": true }
+}
