@@ -95,30 +95,6 @@
   .decides { margin-top: 14px; font-size: 14px; color: var(--muted); }
   .decides strong, .problem strong { color: var(--ink); }
 
-
-  .dept { padding-top: 48px; scroll-margin-top: 56px; }
-  .dept-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
-  .dept-head h2 { font-size: 30px; line-height: 1.15; }
-  .dept-head .count { font-size: 14px; color: var(--muted); }
-  .more-label { margin: 32px 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-text); }
-  .more-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-  article.idea.compact { padding: 24px; }
-  .compact h3 { font-size: 22px; margin-top: 0; }
-  .compact .summary { font-size: 14.5px; }
-  .compact .problem { font-size: 14px; }
-  .compact .facts dd { font-size: 14px; }
-  .compact .how li { font-size: 14px; }
-  .featured h3 { margin-top: 0; }
-  main#mockups { padding-bottom: 72px; }
-  body.filtered .dept { display: none; }
-  body.filtered .dept.shown { display: block; }
-  @media (min-width: 768px) {
-    .dept-head h2 { font-size: 38px; }
-    .more-grid { grid-template-columns: 1fr 1fr; }
-    .compact .facts { grid-template-columns: 1fr 1fr; }
-    .compact .how ol { grid-template-columns: 1fr; gap: 10px; }
-  }
-
   /* Closing CTA */
   .cta { background: var(--ink); color: #fff; }
   .cta .wrap { padding-top: 64px; padding-bottom: 64px; text-align: center; }
@@ -128,6 +104,11 @@
   .cta .eyebrow { color: var(--gold); }
   footer { background: var(--ink); border-top: 1px solid var(--dark-line); color: var(--soft); font-size: 13px; }
   footer .wrap { padding-top: 18px; padding-bottom: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+
+  body.single .idea { display: none; }
+  body.single .idea.shown { display: block; }
+  body.single .single-note { display: block; }
+  body.single .intro { padding-bottom: 24px; }
 
   @media (min-width: 768px) {
     .hero .wrap { padding-top: 88px; padding-bottom: 80px; }
@@ -156,9 +137,10 @@
 
 <main id="mockups">
   <div class="wrap">
-    <section class="dept" id="finance" data-label="Finance &amp; FP&amp;A">
-      <div class="dept-head"><h2 class="serif">Finance &amp; FP&amp;A</h2><span class="count">6 ideas</span></div>
-      <article class="idea featured" id="margin-leakage">
+
+    <div class="ideas">
+      <article class="idea" id="margin-leakage" data-short="Finance &amp; FP&amp;A">
+        <p class="eyebrow">Finance &amp; FP&amp;A</p>
         <h3 class="serif">Margin Leakage Finder</h3>
         <p class="summary">Finds unapproved discounts, prices below list and loss-making sales in monthly sales data, and estimates the profit that can be recovered.</p>
         <p class="problem"><strong>The problem:</strong> Unapproved discounts and loss-making sales hide in sales data until the year-end results.</p>
@@ -172,79 +154,9 @@
         <div class="shot"><img src="img/01_margin_leakage_finder.png" alt="Margin Leakage Finder mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> The finance manager approves actions before they go to sales.</p>
       </article>
-      <p class="more-label">More Finance &amp; FP&amp;A ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="commentary-drafter">
-          <h3 class="serif">Month-End Commentary Drafter</h3>
-          <p class="summary">Drafts variance commentary for every line over the materiality threshold and lists questions for line owners where the cause is unknown.</p>
-          <p class="problem"><strong>The problem:</strong> Writing variance commentary every close takes hours, and causes are chased by email.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>FP&amp;A analyst</dd></div>
-            <div><dt>When</dt><dd>Monthly, at close</dd></div>
-            <div><dt>Input</dt><dd>Actuals vs budget export, materiality threshold, business unit notes</dd></div>
-            <div class="out"><dt>Output</dt><dd>Draft commentary per flagged line and questions for line owners</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Upload actuals vs budget.</span></li><li><span class="n">2</span><span>Review the lines over the threshold and the draft comments.</span></li><li><span class="n">3</span><span>Edit inline and copy the final commentary.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The analyst confirms every cause. Unknown causes stay marked, not guessed.</p>
-        </article>
-        <article class="idea compact" id="scenario-forecaster">
-          <h3 class="serif">Scenario Forecaster</h3>
-          <p class="summary">Lets you move key drivers such as growth, receivable days and FX, and shows the impact on profit, cash and covenants for each scenario.</p>
-          <p class="problem"><strong>The problem:</strong> Management asks what-if questions that need the model rerun quickly.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>FP&amp;A manager, CFO</dd></div>
-            <div><dt>When</dt><dd>When management asks a what-if question</dd></div>
-            <div><dt>Input</dt><dd>Key figures from the three-statement model, scenario assumptions</dd></div>
-            <div class="out"><dt>Output</dt><dd>Profit, cash and covenant impact per scenario, with a summary table</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter the base figures.</span></li><li><span class="n">2</span><span>Move the driver sliders for each scenario.</span></li><li><span class="n">3</span><span>Compare scenarios and read the summary of what moved.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> FP&amp;A reconciles the results to the full model before sharing.</p>
-        </article>
-        <article class="idea compact" id="cash-vs-profit">
-          <h3 class="serif">Cash vs Profit Explainer</h3>
-          <p class="summary">Explains in plain language why profit and operating cash moved differently, with a profit-to-cash bridge.</p>
-          <p class="problem"><strong>The problem:</strong> Business heads ask why profit went up but cash went down.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>FP&amp;A analyst, business heads</dd></div>
-            <div><dt>When</dt><dd>Monthly or quarterly reporting</dd></div>
-            <div><dt>Input</dt><dd>Key P&amp;L and balance sheet lines for two periods</dd></div>
-            <div class="out"><dt>Output</dt><dd>Profit-to-cash bridge chart and the top three drivers in plain language</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter figures for two periods.</span></li><li><span class="n">2</span><span>See the bridge from net profit to operating cash.</span></li><li><span class="n">3</span><span>Share the explanation with business heads.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Finance checks that every number ties back to the statements.</p>
-        </article>
-        <article class="idea compact" id="memo-writer">
-          <h3 class="serif">Board / CFO Memo Writer</h3>
-          <p class="summary">Turns analysis into a one-page memo with the decision needed, options, numbers, risks and next steps.</p>
-          <p class="problem"><strong>The problem:</strong> Good analysis gets lost in long decks.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Finance manager, FP&amp;A</dd></div>
-            <div><dt>When</dt><dd>Before a board or CFO decision</dd></div>
-            <div><dt>Input</dt><dd>Decision needed, options, key numbers, audience</dd></div>
-            <div class="out"><dt>Output</dt><dd>One-page memo in a fixed template</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Fill in the decision, options and key numbers.</span></li><li><span class="n">2</span><span>Review the draft memo.</span></li><li><span class="n">3</span><span>Edit, then copy or download it.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The owner checks every figure and the tone before sending.</p>
-        </article>
-        <article class="idea compact" id="cfo-sparring">
-          <h3 class="serif">CFO Sparring Partner</h3>
-          <p class="summary">Plays a sceptical CFO who challenges a proposal before the real meeting.</p>
-          <p class="problem"><strong>The problem:</strong> Proposals get rejected on questions nobody prepared for.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Anyone presenting to the CFO</dd></div>
-            <div><dt>When</dt><dd>Before a capital request or proposal review</dd></div>
-            <div><dt>Input</dt><dd>Draft proposal or capital plan</dd></div>
-            <div class="out"><dt>Output</dt><dd>Tough questions, weak assumptions and missing data, ranked by risk</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Paste the proposal.</span></li><li><span class="n">2</span><span>Answer the questions one at a time.</span></li><li><span class="n">3</span><span>Fix the weak points listed at the end.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> You decide which challenges are valid.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="corporate-finance" data-label="Corporate Finance">
-      <div class="dept-head"><h2 class="serif">Corporate Finance</h2><span class="count">4 ideas</span></div>
-      <article class="idea featured" id="cash-forecast">
+      <article class="idea" id="cash-forecast" data-short="Corporate Finance">
+        <p class="eyebrow">Corporate Finance</p>
         <h3 class="serif">13-Week Cash Flow Forecaster</h3>
         <p class="summary">Builds a weekly cash forecast for the next 13 weeks, shows the weeks that fall below minimum cash, and suggests actions to close the gap.</p>
         <p class="problem"><strong>The problem:</strong> Cash forecasts are built by hand, so shortfalls are seen too late to act.</p>
@@ -258,53 +170,9 @@
         <div class="shot"><img src="img/02_13_week_cash_flow_forecaster.png" alt="13-Week Cash Flow Forecaster mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> The CFO chooses which actions to take.</p>
       </article>
-      <p class="more-label">More Corporate Finance ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="funding-decision">
-          <h3 class="serif">Funding Decision Analyst</h3>
-          <p class="summary">Compares a bank loan, shareholder loan and equity for a project, including after-tax cost and the 4 : 1 debt-to-equity check.</p>
-          <p class="problem"><strong>The problem:</strong> Choosing between a bank loan, shareholder loan and equity is done with incomplete tax and legal input.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Treasury, CFO</dd></div>
-            <div><dt>When</dt><dd>Before choosing how to fund a project</dd></div>
-            <div><dt>Input</dt><dd>Project cash flows, funding terms, current debt and equity</dd></div>
-            <div class="out"><dt>Output</dt><dd>NPV, IRR, payback and after-tax cost per option, with tax and approval flags</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter the project cash flows and each funding option.</span></li><li><span class="n">2</span><span>Compare the options side by side.</span></li><li><span class="n">3</span><span>Read the flags for transfer pricing and approvals.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The tax team confirms tax treatment and treasury confirms rates.</p>
-        </article>
-        <article class="idea compact" id="covenant-monitor">
-          <h3 class="serif">Covenant Monitor</h3>
-          <p class="summary">Tracks each loan covenant against its limit every month and warns before a breach.</p>
-          <p class="problem"><strong>The problem:</strong> Covenant breaches are spotted late.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Treasury, finance manager</dd></div>
-            <div><dt>When</dt><dd>Monthly, after the financials close</dd></div>
-            <div><dt>Input</dt><dd>Covenant formulas and limits (set once), monthly financials</dd></div>
-            <div class="out"><dt>Output</dt><dd>Headroom and red, amber or green status per covenant, with history</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Set up each covenant once from the loan agreement.</span></li><li><span class="n">2</span><span>Enter the month's figures.</span></li><li><span class="n">3</span><span>Act early on any amber or red covenant.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Treasury checks ratio definitions against the agreements.</p>
-        </article>
-        <article class="idea compact" id="group-cash">
-          <h3 class="serif">Group Cash Position Summary</h3>
-          <p class="summary">Shows cash across all group entities, flags entities short of cash, and suggests intercompany funding moves.</p>
-          <p class="problem"><strong>The problem:</strong> Cash sits in some entities while others borrow.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Group treasury</dd></div>
-            <div><dt>When</dt><dd>Weekly</dd></div>
-            <div><dt>Input</dt><dd>Bank balances, committed payments and forecasts per entity</dd></div>
-            <div class="out"><dt>Output</dt><dd>Group cash view, entities short of cash, possible funding moves</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Paste each entity's cash and forecast.</span></li><li><span class="n">2</span><span>See the group total and the entities short of cash.</span></li><li><span class="n">3</span><span>Review the suggested funding moves.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Treasury approves any funding move.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="tax" data-label="Tax">
-      <div class="dept-head"><h2 class="serif">Tax</h2><span class="count">7 ideas</span></div>
-      <article class="idea featured" id="sp2dk">
+      <article class="idea" id="sp2dk" data-short="Tax">
+        <p class="eyebrow">Tax</p>
         <h3 class="serif">SP2DK Response Prep</h3>
         <p class="summary">Reconciles each item DJP flags in an SP2DK letter, lists the evidence needed, and drafts a reply for the tax manager to review.</p>
         <p class="problem"><strong>The problem:</strong> DJP clarification letters (SP2DK) need fast reconciliation and a clear reply.</p>
@@ -318,92 +186,9 @@
         <div class="shot"><img src="img/03_sp2dk_response_prep.png" alt="SP2DK Response Prep mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> The tax manager or consultant approves the reply before anything is sent to DJP.</p>
       </article>
-      <p class="more-label">More Tax ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="tax-regulation">
-          <h3 class="serif">Tax Regulation Assistant</h3>
-          <p class="summary">Answers tax questions only from a loaded set of regulations and shows the article it used.</p>
-          <p class="problem"><strong>The problem:</strong> Rules change often and staff answer from memory.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Tax staff, finance team</dd></div>
-            <div><dt>When</dt><dd>Whenever a tax question comes up</dd></div>
-            <div><dt>Input</dt><dd>A question, plus the regulation texts loaded once</dd></div>
-            <div class="out"><dt>Output</dt><dd>Answer citing the regulation and article, or &ldquo;not covered&rdquo;</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Load the regulations your team uses.</span></li><li><span class="n">2</span><span>Ask a question in plain language.</span></li><li><span class="n">3</span><span>Check the cited article.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Tax staff verify each citation.</p>
-        </article>
-        <article class="idea compact" id="fiscal-correction">
-          <h3 class="serif">Fiscal Correction Finder</h3>
-          <p class="summary">Scans the expense ledger for items that often need fiscal correction in the annual corporate tax return.</p>
-          <p class="problem"><strong>The problem:</strong> Fiscal corrections for the annual corporate tax return are found late.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Tax staff, accountants</dd></div>
-            <div><dt>When</dt><dd>Before preparing the annual tax return</dd></div>
-            <div><dt>Input</dt><dd>Trial balance and detailed expense ledger</dd></div>
-            <div class="out"><dt>Output</dt><dd>Likely positive and negative corrections, with the reason and evidence needed</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Upload the expense ledger.</span></li><li><span class="n">2</span><span>Review the flagged accounts and reasons.</span></li><li><span class="n">3</span><span>Collect evidence or book the correction.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The tax team decides each correction.</p>
-        </article>
-        <article class="idea compact" id="vat-checker">
-          <h3 class="serif">VAT Treatment Checker</h3>
-          <p class="summary">Works out the VAT base, rate and invoice code for a transaction under the 12% rules.</p>
-          <p class="problem"><strong>The problem:</strong> Staff are unsure of the VAT base and invoice code after the 12% change.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Tax staff, billing team</dd></div>
-            <div><dt>When</dt><dd>Before invoicing an unusual transaction</dd></div>
-            <div><dt>Input</dt><dd>Transaction description and the parties</dd></div>
-            <div class="out"><dt>Output</dt><dd>VAT base, rate, invoice code and the regulation cited</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Answer the guided questions.</span></li><li><span class="n">2</span><span>See the VAT base, rate and code.</span></li><li><span class="n">3</span><span>Read the explanation.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Tax staff confirm before invoicing.</p>
-        </article>
-        <article class="idea compact" id="withholding-tax">
-          <h3 class="serif">Withholding Tax Navigator</h3>
-          <p class="summary">Tells accounts payable which PPh article and rate apply to a payment and which documents are needed.</p>
-          <p class="problem"><strong>The problem:</strong> Accounts payable is unsure which PPh article and rate applies to a payment.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Accounts payable, tax staff</dd></div>
-            <div><dt>When</dt><dd>Before paying a vendor</dd></div>
-            <div><dt>Input</dt><dd>Payment type, vendor status and residency, contract summary</dd></div>
-            <div class="out"><dt>Output</dt><dd>PPh article, rate and documents needed</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Answer questions about the payment and vendor.</span></li><li><span class="n">2</span><span>See the article, rate and documents.</span></li><li><span class="n">3</span><span>Send unusual cases to the tax team.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Tax staff confirm unusual cases.</p>
-        </article>
-        <article class="idea compact" id="tp-draft">
-          <h3 class="serif">Transfer Pricing First Draft</h3>
-          <p class="summary">Drafts the functional analysis for transfer pricing documentation and checks the documentation thresholds.</p>
-          <p class="problem"><strong>The problem:</strong> Transfer pricing documentation under PMK 172/2023 takes weeks of drafting.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Tax manager, TP specialist</dd></div>
-            <div><dt>When</dt><dd>During annual TP documentation</dd></div>
-            <div><dt>Input</dt><dd>Related-party transactions, group structure, functions and risks per entity</dd></div>
-            <div class="out"><dt>Output</dt><dd>Draft functional analysis, transaction characterisation, threshold check</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Fill in the functions, assets and risks checklist.</span></li><li><span class="n">2</span><span>Review the draft analysis.</span></li><li><span class="n">3</span><span>Hand over to the TP specialist for benchmarking.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> A TP specialist reviews. Benchmarking stays with specialists.</p>
-        </article>
-        <article class="idea compact" id="global-min-tax">
-          <h3 class="serif">Global Minimum Tax Screener</h3>
-          <p class="summary">Checks whether a group is likely in scope of the global minimum tax and lists the data to collect.</p>
-          <p class="problem"><strong>The problem:</strong> Large groups are unsure whether PMK 136/2024 applies and what data they need.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Group tax</dd></div>
-            <div><dt>When</dt><dd>Annual planning</dd></div>
-            <div><dt>Input</dt><dd>Consolidated revenue, profit and taxes paid per jurisdiction</dd></div>
-            <div class="out"><dt>Output</dt><dd>In or out of scope, effective tax rate per jurisdiction, data to collect</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter group revenue and figures per jurisdiction.</span></li><li><span class="n">2</span><span>See the EUR 750m threshold check and effective tax rates.</span></li><li><span class="n">3</span><span>Collect the listed data.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Group tax confirms scope with advisors.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="legal" data-label="Legal">
-      <div class="dept-head"><h2 class="serif">Legal</h2><span class="count">4 ideas</span></div>
-      <article class="idea featured" id="contract-risk">
+      <article class="idea" id="contract-risk" data-short="Legal">
+        <p class="eyebrow">Legal</p>
         <h3 class="serif">Pre-Signing Contract Risk Check</h3>
         <p class="summary">Checks a contract's financial, tax and data clauses before signing, rates each one, estimates the cost of bad clauses, and suggests positions to negotiate.</p>
         <p class="problem"><strong>The problem:</strong> Contracts are signed before finance sees the financial, tax and data clauses.</p>
@@ -417,53 +202,9 @@
         <div class="shot"><img src="img/04_pre_signing_contract_risk_check.png" alt="Pre-Signing Contract Risk Check mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> Legal counsel and the CFO decide what to accept.</p>
       </article>
-      <p class="more-label">More Legal ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="ic-agreement">
-          <h3 class="serif">Intercompany Agreement Checker</h3>
-          <p class="summary">Checks intercompany agreements for the terms auditors and DJP ask for, and compares them with how the deal is booked.</p>
-          <p class="problem"><strong>The problem:</strong> Intercompany agreements miss terms that auditors and DJP ask for.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Legal counsel, tax and finance</dd></div>
-            <div><dt>When</dt><dd>Before signing or renewing an intercompany agreement</dd></div>
-            <div><dt>Input</dt><dd>Agreement text and how the transactions are booked</dd></div>
-            <div class="out"><dt>Output</dt><dd>Missing or weak terms and mismatches with the books</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Paste the agreement.</span></li><li><span class="n">2</span><span>Review the pass, missing and unclear items.</span></li><li><span class="n">3</span><span>Fix the gaps with legal.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Legal counsel reviews before any change.</p>
-        </article>
-        <article class="idea compact" id="approval-mapper">
-          <h3 class="serif">Corporate Approval Mapper</h3>
-          <p class="summary">Shows which approvals a transaction needs, in what order, and the documents for each step.</p>
-          <p class="problem"><strong>The problem:</strong> Deals stall because approvals were not planned.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Corporate secretary, finance</dd></div>
-            <div><dt>When</dt><dd>When planning a transaction</dd></div>
-            <div><dt>Input</dt><dd>Transaction type and amount, the company's approval matrix</dd></div>
-            <div class="out"><dt>Output</dt><dd>Approval steps in order (GMS, directors, commissioners) and documents per step</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Set up the approval matrix once.</span></li><li><span class="n">2</span><span>Pick the transaction type and amount.</span></li><li><span class="n">3</span><span>Follow the approval steps.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The corporate secretary or legal confirms.</p>
-        </article>
-        <article class="idea compact" id="contract-terms">
-          <h3 class="serif">Contract Financial Terms Extractor</h3>
-          <p class="summary">Pulls payment terms, penalties, FX clauses and renewal dates from contracts into one table.</p>
-          <p class="problem"><strong>The problem:</strong> Payment terms, penalties and renewal dates are buried in contracts.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Finance, legal, procurement</dd></div>
-            <div><dt>When</dt><dd>When reviewing contracts or upcoming renewals</dd></div>
-            <div><dt>Input</dt><dd>Contract texts, one at a time</dd></div>
-            <div class="out"><dt>Output</dt><dd>One table of counterparties, payment terms, penalties, FX clauses and dates</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Paste a contract.</span></li><li><span class="n">2</span><span>Check the extracted row.</span></li><li><span class="n">3</span><span>Download the full table as CSV.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Spot-check the extracted terms against the contracts.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="accounting" data-label="Accounting">
-      <div class="dept-head"><h2 class="serif">Accounting</h2><span class="count">4 ideas</span></div>
-      <article class="idea featured" id="journal-anomaly">
+      <article class="idea" id="journal-anomaly" data-short="Accounting">
+        <p class="eyebrow">Accounting</p>
         <h3 class="serif">Journal Entry Anomaly Detector</h3>
         <p class="summary">Scans the month's journal entries before close and ranks unusual ones: duplicates, round amounts, weekend postings, entries just under approval limits and cut-off issues.</p>
         <p class="problem"><strong>The problem:</strong> Wrong postings, duplicates and cut-off errors are found by auditors or DJP, not by the team.</p>
@@ -477,53 +218,9 @@
         <div class="shot"><img src="img/05_journal_entry_anomaly_detector.png" alt="Journal Entry Anomaly Detector mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> The controller decides which entries to correct.</p>
       </article>
-      <p class="more-label">More Accounting ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="ic-reconciliation">
-          <h3 class="serif">Intercompany Reconciliation Checker</h3>
-          <p class="summary">Matches intercompany balances between entities and groups the differences by cause.</p>
-          <p class="problem"><strong>The problem:</strong> Intercompany balances don't match at month-end, delaying consolidation.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Group accountants</dd></div>
-            <div><dt>When</dt><dd>Monthly, before consolidation</dd></div>
-            <div><dt>Input</dt><dd>Intercompany ledgers from each entity</dd></div>
-            <div class="out"><dt>Output</dt><dd>Matched and unmatched items, differences by cause, draft follow-up emails</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Upload each entity's ledger.</span></li><li><span class="n">2</span><span>Review the unmatched items by cause.</span></li><li><span class="n">3</span><span>Send the follow-up emails.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> Accountants confirm each adjustment.</p>
-        </article>
-        <article class="idea compact" id="elimination-drafter">
-          <h3 class="serif">Elimination Entry Drafter</h3>
-          <p class="summary">Generates consolidation elimination journals from reconciled intercompany balances.</p>
-          <p class="problem"><strong>The problem:</strong> Consolidation eliminations are prepared by hand each period.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Consolidation team, controller</dd></div>
-            <div><dt>When</dt><dd>Each consolidation period</dd></div>
-            <div><dt>Input</dt><dd>Reconciled intercompany balances, ownership percentages</dd></div>
-            <div class="out"><dt>Output</dt><dd>Proposed elimination journals with explanations, as CSV</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter the balances and ownership.</span></li><li><span class="n">2</span><span>Review each proposed journal.</span></li><li><span class="n">3</span><span>Download it for the ERP.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The controller approves journals before posting.</p>
-        </article>
-        <article class="idea compact" id="treatment-explainer">
-          <h3 class="serif">Accounting Treatment Explainer</h3>
-          <p class="summary">Explains how to book a shareholder loan, equity injection or management fee under PSAK, with example journals.</p>
-          <p class="problem"><strong>The problem:</strong> Teams disagree on how to book a shareholder loan, equity injection or management fee.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Accountants, controller</dd></div>
-            <div><dt>When</dt><dd>When a new or unusual transaction comes up</dd></div>
-            <div><dt>Input</dt><dd>Transaction type and terms</dd></div>
-            <div class="out"><dt>Output</dt><dd>Treatment at entity and group level, example journals, disclosure points</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Pick the transaction type.</span></li><li><span class="n">2</span><span>Enter the terms.</span></li><li><span class="n">3</span><span>Read the journals and the PSAK reference.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The controller or auditor confirms.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="deals" data-label="Deals">
-      <div class="dept-head"><h2 class="serif">Deals</h2><span class="count">3 ideas</span></div>
-      <article class="idea featured" id="deal-check">
+      <article class="idea" id="deal-check" data-short="Deals">
+        <p class="eyebrow">Deals</p>
         <h3 class="serif">Deal Check Assistant</h3>
         <p class="summary">Runs an intercompany deal through accounting, tax, transfer pricing and legal checks, including the 4 : 1 debt-to-equity limit, and produces a one-page report for the CFO.</p>
         <p class="problem"><strong>The problem:</strong> Intercompany deals reach the CFO before accounting, tax and legal issues are checked.</p>
@@ -537,40 +234,9 @@
         <div class="shot"><img src="img/06_deal_check_assistant.png" alt="Deal Check Assistant mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> The CFO approves or changes the deal.</p>
       </article>
-      <p class="more-label">More Deals ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="dd-red-flags">
-          <h3 class="serif">Due Diligence Red Flag Scanner</h3>
-          <p class="summary">Scans a target company's financials for common red flags and drafts questions for the due diligence team.</p>
-          <p class="problem"><strong>The problem:</strong> Red flags in a target's numbers surface late in due diligence, after time and fees are spent.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Corporate development, deal team</dd></div>
-            <div><dt>When</dt><dd>Early in an acquisition or investment</dd></div>
-            <div><dt>Input</dt><dd>Target's financial statements for three years, receivables aging, related-party balances</dd></div>
-            <div class="out"><dt>Output</dt><dd>Red flags with the figures behind them and a list of due diligence questions</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Upload the target's financials.</span></li><li><span class="n">2</span><span>Review flags such as customer concentration, old receivables and related-party balances.</span></li><li><span class="n">3</span><span>Send the question list to the target or advisors.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The deal lead and advisors judge each flag.</p>
-        </article>
-        <article class="idea compact" id="valuation-check">
-          <h3 class="serif">Valuation Cross-Check</h3>
-          <p class="summary">Compares a DCF value with the multiples you enter and shows which assumptions drive the value most.</p>
-          <p class="problem"><strong>The problem:</strong> Valuations rest on a few assumptions that nobody stress-tests before negotiation.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>CFO, corporate development</dd></div>
-            <div><dt>When</dt><dd>Before making or accepting an offer</dd></div>
-            <div><dt>Input</dt><dd>Target forecast, discount rate assumptions, comparable multiples you enter</dd></div>
-            <div class="out"><dt>Output</dt><dd>Value ranges by method, a football-field chart, the assumptions that move value most</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Enter the forecast and assumptions.</span></li><li><span class="n">2</span><span>Add comparable multiples.</span></li><li><span class="n">3</span><span>Compare the ranges and test the key assumptions.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The CFO and advisors set the price range.</p>
-        </article>
-      </div>
-    </section>
 
-    <section class="dept" id="ai-governance" data-label="AI Governance">
-      <div class="dept-head"><h2 class="serif">AI Governance</h2><span class="count">3 ideas</span></div>
-      <article class="idea featured" id="data-masking">
+      <article class="idea" id="data-masking" data-short="Data Privacy">
+        <p class="eyebrow">Data Privacy</p>
         <h3 class="serif">Data Masking Gate for AI</h3>
         <p class="summary">Masks names, NIK, NPWP and bank accounts in the browser before data is sent to Claude, then restores the real values in the answer on screen only.</p>
         <p class="problem"><strong>The problem:</strong> Staff paste salaries, NIK and NPWP numbers into AI tools without masking them.</p>
@@ -584,69 +250,32 @@
         <div class="shot"><img src="img/07_data_masking_gate.png" alt="Data Masking Gate for AI mockup screen" loading="lazy"></div>
         <p class="decides"><strong>Who decides:</strong> You check the masked data before anything is sent.</p>
       </article>
-      <p class="more-label">More AI Governance ideas</p>
-      <div class="more-grid">
-        <article class="idea compact" id="ai-review-log">
-          <h3 class="serif">AI Output Review Log</h3>
-          <p class="summary">Records how each AI output was checked and what was fixed, with a monthly summary of patterns.</p>
-          <p class="problem"><strong>The problem:</strong> Teams can't show how AI output was checked.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Finance teams using AI, team lead</dd></div>
-            <div><dt>When</dt><dd>Every time an AI output is used</dd></div>
-            <div><dt>Input</dt><dd>The AI output used and what the reviewer changed</dd></div>
-            <div class="out"><dt>Output</dt><dd>Log of errors and fixes, counts by error type, monthly summary</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Log the output and what was wrong.</span></li><li><span class="n">2</span><span>See error counts over time.</span></li><li><span class="n">3</span><span>Read the monthly summary of patterns.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The team lead reviews the log monthly.</p>
-        </article>
-        <article class="idea compact" id="pdp-inventory">
-          <h3 class="serif">Personal Data Inventory</h3>
-          <p class="summary">Lists which finance files hold personal data, what kind and why, as a starting point for UU PDP records.</p>
-          <p class="problem"><strong>The problem:</strong> Finance keeps payroll, vendor and customer files with personal data, but nobody has a list of what is kept where.</p>
-          <dl class="facts">
-            <div><dt>Who uses it</dt><dd>Finance manager, data protection officer</dd></div>
-            <div><dt>When</dt><dd>Quarterly, or before an audit</dd></div>
-            <div><dt>Input</dt><dd>Column headers and a few masked rows from each finance file</dd></div>
-            <div class="out"><dt>Output</dt><dd>Inventory of personal data by file, with type, purpose and retention questions</dd></div>
-          </dl>
-          <div class="how"><p class="label">How it works</p><ol><li><span class="n">1</span><span>Paste each file's headers and a few masked rows.</span></li><li><span class="n">2</span><span>Review the detected data types, such as name, NIK, NPWP and bank account.</span></li><li><span class="n">3</span><span>Fill in purpose and retention, then export the list.</span></li></ol></div>
-          <p class="decides"><strong>Who decides:</strong> The data protection officer confirms the inventory.</p>
-        </article>
-      </div>
-    </section>
+    </div>
   </div>
 </main>
 
 <footer><div class="wrap"><span>Mockups for practitioner review · sample data · fictional companies</span></div></footer>
 
 <script>
-  const depts = [...document.querySelectorAll('section.dept')];
+  const ideas = [...document.querySelectorAll('article.idea')];
   const tabs = document.getElementById('tabs');
-  function addTab(id, label) {
+  const all = document.createElement('a');
+  all.href = '#'; all.textContent = 'All'; all.dataset.id = '';
+  all.addEventListener('click', e => { e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); route(false); });
+  tabs.appendChild(all);
+  ideas.forEach(s => {
     const a = document.createElement('a');
-    a.href = id ? '#' + id : '#'; a.innerHTML = label; a.dataset.id = id;
+    a.href = '#' + s.id; a.innerHTML = s.dataset.short; a.dataset.id = s.id;
     tabs.appendChild(a);
-    return a;
-  }
-  addTab('', 'All').addEventListener('click', e => {
-    e.preventDefault(); history.replaceState(null, '', location.pathname + location.search); route(false);
-    window.scrollTo(0, 0);
   });
-  depts.forEach(d => addTab(d.id, d.dataset.label));
   function route(scroll = true) {
     const id = (location.hash || '').slice(1);
-    let dept = depts.find(d => d.id === id);
-    let card = null;
-    if (!dept && id) {
-      card = document.getElementById(id);
-      if (card && card.closest) dept = card.closest('section.dept');
-    }
-    document.body.classList.toggle('filtered', !!dept);
-    depts.forEach(d => d.classList.toggle('shown', d === dept));
-    const active = dept ? dept.id : '';
+    const target = ideas.find(s => s.id === id);
+    const active = target ? id : '';
+    document.body.classList.toggle('single', !!target);
+    ideas.forEach(s => s.classList.toggle('shown', s === target));
     tabs.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.dataset.id === active));
-    if (scroll && card && card.tagName === 'ARTICLE') card.scrollIntoView({ behavior: 'auto' });
-    else if (scroll && dept) document.querySelector('nav.tabs').scrollIntoView({ behavior: 'auto' });
+    if (target && scroll) document.querySelector('nav.tabs').scrollIntoView({ behavior: 'auto' });
   }
   window.addEventListener('hashchange', () => route(true));
   route(true);
